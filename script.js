@@ -9,14 +9,16 @@ const standAudio = document.getElementById('standAudio');
 
 // Add event listeners to the buttons
 redButton.addEventListener('click', () => {
+    failedAudio.currentTime = 0.23;
   failedAudio.play(); // Play the "You Failed" audio
 });
 
 greenButton.addEventListener('click', () => {
+    passedAudio.currentTime = 0.22;
   passedAudio.play(); // Play the "You Passed" audio
 });
 
 orangeButton.addEventListener('click', () => {
-    standAudio.currentTime = 2.20;
+    standAudio.currentTime = 2.21;
   standAudio.play(); // Play the "Go Stand" audio
 });
