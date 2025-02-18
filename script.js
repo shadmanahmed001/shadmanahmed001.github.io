@@ -17,6 +17,6 @@ greenButton.addEventListener('click', () => {
 });
 
 orangeButton.addEventListener('click', () => {
-    standAudio.currentTime = 2;
+    standAudio.currentTime = 2.20;
   standAudio.play(); // Play the "Go Stand" audio
 });
