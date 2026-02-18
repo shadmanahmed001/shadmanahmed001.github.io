@@ -296,3 +296,10 @@ ul {
     gap: 0.65rem;
   }
 }
+
+.title-list {
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted);
+}
+.title-list li { margin-bottom: 0.35rem; }
