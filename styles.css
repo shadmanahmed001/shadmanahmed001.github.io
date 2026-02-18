@@ -303,3 +303,9 @@ ul {
   color: var(--muted);
 }
 .title-list li { margin-bottom: 0.35rem; }
+
+.lead-meta {
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
