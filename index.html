@@ -115,21 +115,9 @@
         </ul>
 
         <h3>Recent on Instagram</h3>
-        <p>I regularly post reminders and updates. Tap below to view the latest posts and stories.</p>
-        <div class="insta-grid">
-          <a class="insta-card" href="https://www.instagram.com/shadman.ahmed.qasmi" target="_blank" rel="noopener">
-            <span>Latest Posts</span>
-            <strong>@shadman.ahmed.qasmi</strong>
-          </a>
-          <a class="insta-card" href="https://www.instagram.com/shadman.ahmed.qasmi/reels/" target="_blank" rel="noopener">
-            <span>Recent Reels</span>
-            <strong>Watch Short Clips</strong>
-          </a>
-          <a class="insta-card" href="https://www.instagram.com/shadman.ahmed.qasmi/stories/" target="_blank" rel="noopener">
-            <span>Stories</span>
-            <strong>View Current Stories</strong>
-          </a>
-        </div>
+        <p>Latest posts and reels are shown below and refreshed weekly. For stories, tap Instagram directly.</p>
+        <div id="instagram-feed" class="insta-grid" aria-live="polite"></div>
+        <p><a href="https://www.instagram.com/shadman.ahmed.qasmi/stories/" target="_blank" rel="noopener">View current Instagram Stories</a></p>
       </div>
     </section>
 
@@ -137,6 +125,7 @@
       <div class="container narrow">
         <h2>Contact / Invitations</h2>
         <p>For speaking invitations, class requests, or community collaboration, please send a brief message below.</p>
+        <p>I personally review messages and appointment requests as schedule allows.</p>
         <p><strong>Quick appointments via WhatsApp:</strong> <a href="https://wa.me/15106881669" target="_blank" rel="noopener">+1 (510) 688-1669</a></p>
         <form class="contact-form" action="mailto:shadman.ahmed001@gmail.com" method="post" enctype="text/plain">
           <label for="name">Name</label>
@@ -163,6 +152,37 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    async function loadInstagramFeed() {
+      const feed = document.getElementById('instagram-feed');
+      if (!feed) return;
+      try {
+        const res = await fetch('data/instagram-feed.json', { cache: 'no-store' });
+        const data = await res.json();
+        const items = Array.isArray(data.items) ? data.items.slice(0, 6) : [];
+        if (!items.length) throw new Error('No items');
+        feed.innerHTML = items.map(item => `
+          <a class="insta-card" href="${item.url}" target="_blank" rel="noopener">
+            <img src="${item.thumbnail}" alt="Instagram ${item.type}" loading="lazy" referrerpolicy="no-referrer" />
+            <span>${item.type === 'reel' ? 'Recent Reel' : 'Recent Post'}</span>
+            <strong>@shadman.ahmed.qasmi</strong>
+          </a>
+        `).join('');
+      } catch (e) {
+        feed.innerHTML = `
+          <a class="insta-card" href="https://www.instagram.com/shadman.ahmed.qasmi" target="_blank" rel="noopener">
+            <span>Instagram</span>
+            <strong>View latest posts and reels</strong>
+          </a>
+          <a class="insta-card" href="https://www.instagram.com/shadman.ahmed.qasmi/reels/" target="_blank" rel="noopener">
+            <span>Reels</span>
+            <strong>Watch recent clips</strong>
+          </a>
+        `;
+      }
+    }
+
+    loadInstagramFeed();
   </script>
 </body>
 </html>

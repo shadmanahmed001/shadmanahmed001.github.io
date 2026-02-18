@@ -236,6 +236,14 @@ ul {
   color: var(--primary);
 }
 
+.insta-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+}
+
 .contact-form {
   margin-top: 1rem;
   display: grid;
