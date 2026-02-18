@@ -1,0 +1,43 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .button {
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .button:hover {
+    transform: scale(1.1);
+  }
+  
+  .red {
+    background-color: #ff4d4d;
+  }
+  
+  .green {
+    background-color: #4caf50;
+  }
+  
+  .orange {
+    background-color: #ffa500;
+  }
